@@ -13,6 +13,7 @@ const interval = setInterval(() =>
         clearInterval(interval);
 
         const iconSpeed = document.createElement("span")
+        
         iconSpeed.innerHTML = "1x"
         iconSpeed.classList.add("speedAudio")
         elementLoad.prepend(iconSpeed)
@@ -28,26 +29,13 @@ const interval = setInterval(() =>
 
 const intervalAmount = setInterval(() =>
 {
-    if(document.querySelector(".z_tTQ audio") && !document.querySelector(".z_tTQ audio").classList.contains("backRate"))
+    if(js(".z_tTQ audio"))
         ActionAudio()
-}, 1000)
+}, 500)
 
 ActionAudio = () =>
 {
-    const audios = document.querySelectorAll("audio")
+    const audios = jsAll("audio")
 
-    audios.forEach(element =>
-    {        
-        if(stateAudio)
-        {
-            element.playbackRate = 2;
-            element.classList.add("backRate")
-        }
-        else
-        {
-            element.playbackRate = 1;
-            element.classList.remove("backRate")
-        }   
-    })
+    audios.forEach(element =>{stateAudio ? element.playbackRate = 2 : element.playbackRate = 1})
 }
-   
